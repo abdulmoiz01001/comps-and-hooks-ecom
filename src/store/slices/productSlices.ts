@@ -1,18 +1,18 @@
-import create from 'zustand';
 
-interface Product {
+
+// types.ts
+export interface Product {
   id: string;
   name: string;
   price: number;
   // Add more fields as needed
 }
 
-interface ProductState {
+export interface ProductState {
   products: Product[];
   setProducts: (products: Product[]) => void;
 }
-
-export const useProductStore = create<ProductState>((set) => ({
+export const fetchProductSlice = (set: any): ProductState => ({
   products: [],
   setProducts: (products) => set({ products }),
-}));
+});

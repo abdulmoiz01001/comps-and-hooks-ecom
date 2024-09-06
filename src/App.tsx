@@ -20,6 +20,7 @@ import CustomButton from './components/CustomButton'
 import { Button } from '@chakra-ui/react'
 import {fadeIn} from "./variants"
 import {motion} from "framer-motion"
+import Checkout from './components/CheckOutComp'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
     <div className="w-full flex items-center justify-center">
             <ProductSliderComp />
           </div>
+            <Checkout />
           <PaymentComp />
           <Button />
           <CustomButton name={"HEllo"} />

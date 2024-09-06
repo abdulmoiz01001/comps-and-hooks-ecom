@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
+import  useShowToast  from './useShowToast';
+import { apiClient } from '../libs/apiClient';
+import { ADD_TO_CART_ROUTE } from '../utils/constants';
 
 interface AddToCartResponse {
   success: boolean;
@@ -16,16 +19,29 @@ interface UseAddToCartReturn {
 const useAddToCart = (): UseAddToCartReturn => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { showToast } : any = useShowToast();
 
   const addToCart = async (productId: string, quantity: number): Promise<AddToCartResponse | undefined> => {
+   
     setLoading(true);
     try {
-      const response = await axios.post<AddToCartResponse>('/api/cart/add', { productId, quantity });
+      const response = await apiClient.post<AddToCartResponse>(ADD_TO_CART_ROUTE, { productId, quantity });
+     showToast({
+        title: 'Product is saved in a Cart.',
+        description: "We've added the product to your cart",
+        status: 'success',
+      })
       return response.data;
     } catch (err) {
+      showToast({
+        title: 'An error occurred.',
+        description: (err as Error).message,
+        status: 'error',
+      })
       setError((err as Error).message);
     } finally {
       setLoading(false);
+      
     }
   };
 

@@ -1,4 +1,4 @@
-import { useProductStore } from './useProductStore';
+import useStore from '../store/store';
 import { useState, useEffect } from 'react';
 
 interface Product {
@@ -13,7 +13,7 @@ interface UseSearchProductsReturn {
 }
 
 const useSearchProducts = (): UseSearchProductsReturn => {
-  const { products } = useProductStore();
+  const { products } : any = useStore();
   const [query, setQuery] = useState<string>('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
@@ -33,3 +33,5 @@ const useSearchProducts = (): UseSearchProductsReturn => {
 };
 
 export default useSearchProducts;
+
+// use Case  const { filteredProducts, query, setQuery } = useSearchProducts();
