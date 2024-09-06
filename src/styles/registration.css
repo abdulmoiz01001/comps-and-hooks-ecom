@@ -1,0 +1,36 @@
+/* Styles for initial render and transition effects */
+
+.step-transition-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  
+  .step-transition-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  .step-transition-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .step-transition-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  /* Initial animation class */
+  .step-initial-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  
+  .step-initial-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
